@@ -1,6 +1,3 @@
-# Project    : Super Crawler
-# started on : 12/09/2022
-# Owner      : Marc Jammeron
 
 from crawler_core import Crawler
 import re
