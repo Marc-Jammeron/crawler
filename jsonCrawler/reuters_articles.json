@@ -1,0 +1,93 @@
+{
+    "init" : [
+        {
+            "__COMMENT" : "click on accept cookies",
+            "action" : "find", 
+            "subAction" : "click",
+            "type" : "XPATH",
+            "source" : "//*[@id=\"onetrust-accept-btn-handler\"]",
+            "mandatoryLevel" : "1"
+        }
+    ],
+    "step" : [[
+        {
+            "__COMMENT": "get the title of the article",
+            "action" : "findS",
+            "subAction" : "",
+            "type" : "XPATH",
+            "source" : "//*[@id=\"main-content\"]/article/div[1]/div/header/div/div/h1",
+            "mandatoryLevel" : "3",
+            "FailedReturn" : "0",
+            "SuccessReturn" : "CONTENT",
+            "actionOnReturn" : "TEXT",
+            "actionOnReturnArg" : "",
+            "Regex" : ""
+        }],
+        [{
+            "__COMMENT": "get the Author of the article",
+            "action" : "findS",
+            "subAction" : "",
+            "type" : "XPATH",
+            "source" : "//*[@id=\"main-content\"]/article/div[1]/div/header/div/div/div/div[1]/div",
+            "mandatoryLevel" : "3",
+            "FailedReturn" : "0",
+            "SuccessReturn" : "CONTENT",
+            "actionOnReturn" : "TEXT",
+            "actionOnReturnArg" : "",
+            "Regex" : ""
+        }],
+        [{
+            "__COMMENT": "get the Date of the article",
+            "action" : "findS",
+            "subAction" : "",
+            "type" : "XPATH",
+            "source" : "//*[@id=\"main-content\"]/article/div[1]/div/header/div/div/div/div[1]/time/span[1]",
+            "mandatoryLevel" : "3",
+            "FailedReturn" : "0",
+            "SuccessReturn" : "CONTENT",
+            "actionOnReturn" : "TEXT",
+            "actionOnReturnArg" : "",
+            "Regex" : ""
+        }],
+        [{
+            "__COMMENT": "get the summary of the article",
+            "action" : "findS",
+            "subAction" : "",
+            "type" : "XPATH",
+            "source" : "//*[@id=\"main-content\"]/article/div[1]/div/header",
+            "mandatoryLevel" : "3",
+            "FailedReturn" : "0",
+            "SuccessReturn" : "CONTENT",
+            "actionOnReturn" : "GET_ATTR",
+            "actionOnReturnArg" : "description",
+            "Regex" : ""
+        }],
+        [{
+            "__COMMENT": "get the Content of the article",
+            "action" : "find",
+            "subAction" : "",
+            "type" : "XPATH",
+            "source" : "//*[@id=\"main-content\"]/article/div[1]/div/div/div/div[2]",
+            "mandatoryLevel" : "3",
+            "FailedReturn" : "0",
+            "SuccessReturn" : "CONTINUE",
+            "actionOnReturn" : "",
+            "actionOnReturnArg" : "",
+            "Regex" : ""
+        },
+        {
+            "__COMMENT": "get the Content of the article",
+            "action" : "findS",
+            "subAction" : "",
+            "type" : "CLASS_NAME",
+            "source" : "text__text__1FZLe",
+            "mandatoryLevel" : "3",
+            "FailedReturn" : "0",
+            "SuccessReturn" : "CONTENT",
+            "actionOnReturn" : "TEXT",
+            "actionOnReturnArg" : "",
+            "Regex" : ""
+        }]
+    ]
+}
+

@@ -1,0 +1,28 @@
+{
+    "init" : [
+        {
+            "__COMMENT" : "click on accept cookies",
+            "action" : "find", 
+            "subAction" : "click",
+            "type" : "XPATH",
+            "source" : "//*[@id=\"onetrust-accept-btn-handler\"]",
+            "mandatoryLevel" : "1"
+        }
+    ],
+    "step" : [[
+        {
+            "action" : "findS",
+            "type" : "CLASS_NAME",
+            "source" : "basic-card__container__2c0tk",
+            "subAction" : "",
+            "mandatoryLevel" : "3",
+            "source2" : "",
+            "FailedReturn" : "0",
+            "SuccessReturn" : "CONTENT",
+            "actionOnReturn" : "GET_ATTR",
+            "actionOnReturnArg" : "href",
+            "Regex" : ""
+        }]
+    ]
+}
+
