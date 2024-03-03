@@ -8,6 +8,21 @@ import json
 import csv
 import random
 import time
+def open_csv(csvFile):
+    file = open(csvFile)
+    csvReader = csv.reader(file)
+    header = next(csvReader)
+    rows = []
+    for row in csvReader:
+        rows.append(row)
+    file.close()
+    return (header, rows)
+
+
+def save_res(input, file):
+    with open(file, 'a') as f:
+        writer = csv.writer(f)
+        writer.writerow(input)
 
 def process(base_url, instruction, crawler, id=""):
     
@@ -57,23 +72,9 @@ def get_article_urls(json):
         del crawler
 
 
-get_article_urls("reuters.json")
-
-def open_csv(csvFile):
-    file = open(csvFile)
-    csvReader = csv.reader(file)
-    header = next(csvReader)
-    rows = []
-    for row in csvReader:
-        rows.append(row)
-    file.close()
-    return (header, rows)
 
 
-def save_res(input, file):
-    with open(file, 'a') as f:
-        writer = csv.writer(f)
-        writer.writerow(input)
+
 
 def get_article_content(json, source):
     _ , rows = open_csv(source)
@@ -83,9 +84,15 @@ def get_article_content(json, source):
         save_res([row[0], title, author, date, summary[0], content.replace("\n", " ")], "result.csv")
         crawler.shutdown()
         del crawler
-    
-    
-#get_article_content("reuters_articles.json", "articles_urls.csv")
+
+#STEP 1 GET ALL ARTICLES URLS FROM SEARCH TOOL OF REUTERS 
+get_article_urls("reuters.json")
+
+#STEP 2 GET ALL ARTICLES CONTENT
+get_article_content("reuters_articles.json", "articles_urls.csv")
+
+
+###BELOW IS FOR RUNNING THE CODE WITH THREAD BUT IT'S NOT WORKING WELL FOR NOW
 
 # import threading
 # from queue import Queue
